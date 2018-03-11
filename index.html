@@ -13,8 +13,8 @@
 </head>
 
 <body>  
-    <div class='flex-parent viewport-full relative scroll-hidden'>
-        <div class='bg-darken10 viewport-twothirds viewport-full-ml absolute top left right bottom'>
+    <div class='viewport-full relative scroll-hidden'>
+        <div class='bg-darken10 viewport-twothirds viewport-full-ml absolute top left right bottom'></div>
             <div class='absolute top-ml left bottom z1 w-full w360-ml px12 py12-ml'>
                 <div class='flex-parent flex-parent--column viewport-third h-auto-ml hmax-full bg-white round-ml shadow-darken10'>
                   <div class='px12 py12 scroll-auto'>
@@ -24,7 +24,7 @@
                     <p>Explore our work throughout Virginia. We've worked with landowners all over the state and are proud of what we've done to help protect Virginia's remaining open space.</p>
                     &nbsp
                     <!-- box for the year and acreage totals. Would like to give total values as default? Is this possible? -->
-                    <div id='YearAcreage' class='px6 bg-white border border--gray-light round absolute'>
+                    <div id='YearAcreage' class='px3 bg-white'>
                         <h3 class="txt-bold mb12">Year: <span>2007-2017</span></h3>
                         <h3 class="txt-bold mb12">Acreage: <span></span></h3>
                     </div> 
@@ -41,22 +41,38 @@
                     </footer>
                   </div>              
                 </div>                    
-              </div> 
+               
         </div>              
         <!-- section of page for the map -->
-        <div class='flex-child flex-child--grow viewport-twothirds viewport-full-ml relative'>
+        <div class='flex-child flex-child--grow viewport-twothirds viewport-full-ml'>
             <div id="map" class='viewport-twothirds viewport-full-ml'></div>       
         </div>
     </div>
 
     <!-- loading my script libraries -->
-    <script async defer src='https://api.mapbox.com/mapbox-assembly/v0.21.0/assembly.js'></script>
+    <script async defer src="https://api.mapbox.com/mapbox-assembly/v0.20.0/assembly.js"></script>
+    <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
     <script src='js/app.js'></script>
     
     
     
-    <script>    </script> 
+    <script>
+    
+    L.mapbox.accessToken = 'pk.eyJ1IjoiYS10b21iYXJnZSIsImEiOiJjamRkdXM3ZG0wM3M2MnFtMjZsMnVibDB5In0.iJk8JWQpFOjMnWbgfYwRzw';
+    
+    var map = L.mapbox.map('map', 'mapbox.streets-basic', {
+        center: [37.85, -80.21],
+        zoom: 7.5,
+        minZoom: 7,
+        maxZoom: 15,
+      //  maxBounds: L.latLngBounds([37.94, -84.79], [37.62, -72.51])
+          
+    });
+   
+   
+    
+    </script> 
    
 </body>
 
