@@ -17,12 +17,15 @@
     position: 'topright'
   }).addTo(map);
 
+  // request all data here (deferred)
   var countiesData = $.getJSON('data/va-counties.geojson'),
       easementsData = $.getJSON('data/dcr-easements.json'),
       cpEasementsData = $.getJSON('data/cp-easements-list1.geojson');
 
+  // use jQuery promise to wait until they're all loaded
   $.when(countiesData, easementsData, cpEasementsData).done(ready);
 
+  // function called when data are loaded and ready
   function ready(countiesData, easementsData, cpEasementsData) {
 
       // data are all now loaded and accessible within this function
