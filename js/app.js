@@ -84,7 +84,7 @@
 
   function drawcpEasements(cpEasementsData) {
 
-    L.geoJson(cpEasementsData, {
+    var cpEasements = L.geoJson(cpEasementsData, {
       style: function (feature) {
         return {
           color: '#fc2a2a',
@@ -94,11 +94,30 @@
         };
       },
       onEachFeature(feature, layer) {
-        console.log(feature.properties)
+        //console.log(feature.properties)
         layer.bindTooltip(feature.properties.first_name)
       }
     }).addTo(map);
 
+    filterByYear(cpEasements)
+
+  }
+
+  function filterByYear(cpEasements) {
+
+    // select the UI slider
+    $("#slider").on("input change", function(res) {
+      console.log(res.target.value)
+
+      cpEasements.eachLayer(function(layer) {
+        console.log(layer.feature.properties)
+        // if(feature properties year is equal the current selected value)
+        // then show easement
+        // else hide easement
+      })
+
+
+    });
 
   }
  
