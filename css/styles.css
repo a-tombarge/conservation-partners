@@ -3,3 +3,15 @@
 .mapbox-logo {
   display: none; 
 }
+
+/*ensure the side column loads last*/
+.side-col {
+  z-index: 900;
+}
+
+/*override the width of the side column*/
+@media screen and (min-width: 800px) {
+  .w480-ml {
+    width: 480px !important;
+  }
+}
