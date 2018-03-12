@@ -17,48 +17,49 @@
     position: 'topright'
   }).addTo(map);
 
-  $.getJSON('data/va-counties.geojson', function (counties) {
-    //console.log(counties);
+  var countiesData = $.getJSON('data/va-counties.geojson'),
+      easementsData = $.getJSON('data/dcr-easements.json'),
+      cpEasementsData = $.getJSON('data/cp-easements-list1.geojson');
 
-    L.geoJson(counties, {
-      style: function (feature) {
-        return {
-          color: '#999999',
-          weight: 1.5,
-          fillOpacity: 0
-        };
-      }
-    }).addTo(map);
-  })
+  $.when(countiesData, easementsData, cpEasementsData).done(ready);
 
-  $.getJSON('data/dcr-easements.json', function (dcrEasements) {
-    L.geoJson(dcrEasements, {
-      style: function (feature) {
-        return {
-          color: '#9feaf9',
-          weight: 0.3,
-          fillOpacity: 0.5,
-          fillColor: '#9feaf9'
-        };
-      }
-    }).addTo(map);
-  })
+  function ready(countiesData, easementsData, cpEasementsData) {
 
-  $.getJSON('data/cp-easements-list1.geojson', function (cpEasements) {
-    //console.log(cpEasements);
-    L.geoJson(cpEasements, {
-      style: function (feature) {
-        return {
-          color: '#fc2a2a',
-          weight: 0.5,
-          fillOpacity: 1,
-          fillColor: '#fc2a2a'
-        };
-      }
-    }).addTo(map);
-  })
+      // data are all now loaded and accessible within this function
 
-  //omnivore.topojson('data/dcr-easements-topojson.json').addTo(map); 
+      L.geoJson(countiesData, {
+        style: function (feature) {
+          return {
+            color: '#999999',
+            weight: 1.5,
+            fillOpacity: 0
+          };
+        }
+      }).addTo(map);
 
+      L.geoJson(easementsData, {
+        style: function (feature) {
+          return {
+            color: '#9feaf9',
+            weight: 0.3,
+            fillOpacity: 0.5,
+            fillColor: '#9feaf9'
+          };
+        }
+      }).addTo(map);
 
+      L.geoJson(cpEasementsData, {
+        style: function (feature) {
+          return {
+            color: '#fc2a2a',
+            weight: 0.5,
+            fillOpacity: 1,
+            fillColor: '#fc2a2a'
+          };
+        }
+      }).addTo(map);
+
+  }
+
+ 
 })(); //end of master function
