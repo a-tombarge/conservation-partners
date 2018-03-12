@@ -17,10 +17,6 @@
     position: 'topright'
   }).addTo(map);
 
-
-
-  
-
   $.getJSON('data/va-counties.geojson', function (counties) {
     //console.log(counties);
 
