@@ -45,40 +45,61 @@
   function ready(countiesData, easementsData, cpEasementsData) {
 
       // data are all now loaded and accessible within this function
-
-      L.geoJson(countiesData, {
-        style: function (feature) {
-          return {
-            color: '#999999',
-            weight: 1.5,
-            fillOpacity: 0
-          };
-        }
-      }).addTo(map);
-
-      L.geoJson(easementsData, {
-        style: function (feature) {
-          return {
-            color: '#9feaf9',
-            weight: 0.3,
-            fillOpacity: 0.5,
-            fillColor: '#9feaf9'
-          };
-        }
-      }).addTo(map);
-
-      L.geoJson(cpEasementsData, {
-        style: function (feature) {
-          return {
-            color: '#fc2a2a',
-            weight: 0.5,
-            fillOpacity: 1,
-            fillColor: '#fc2a2a'
-          };
-        }
-      }).addTo(map);
+      drawCounties(countiesData);
+      drawEasements(easementsData);
+      drawcpEasements(cpEasementsData);
 
   }
 
+  function drawCounties(countiesData) {
+
+    L.geoJson(countiesData, {
+      style: function (feature) {
+        return {
+          color: '#999999',
+          weight: 1.5,
+          fillOpacity: 0
+        };
+      }
+    }).addTo(map);
+
+  }
+
+  function drawEasements(easementsData) {
+
+    L.geoJson(easementsData, {
+      style: function (feature) {
+        return {
+          color: '#9feaf9',
+          weight: 0.3,
+          fillOpacity: 0.5,
+          fillColor: '#9feaf9'
+        };
+      }
+    }).addTo(map);
+
+
+  }
+  
+
+  function drawcpEasements(cpEasementsData) {
+
+    L.geoJson(cpEasementsData, {
+      style: function (feature) {
+        return {
+          color: '#fc2a2a',
+          weight: 0.5,
+          fillOpacity: 1,
+          fillColor: '#fc2a2a'
+        };
+      },
+      onEachFeature(feature, layer) {
+        console.log(feature.properties)
+        layer.bindTooltip(feature.properties.first_name)
+      }
+    }).addTo(map);
+
+
+  }
  
 })(); //end of master function
