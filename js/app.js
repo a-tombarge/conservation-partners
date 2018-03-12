@@ -1,17 +1,32 @@
 (function () {
 
-  L.mapbox.accessToken = 'pk.eyJ1IjoiYS10b21iYXJnZSIsImEiOiJjamRkdXM3ZG0wM3M2MnFtMjZsMnVibDB5In0.iJk8JWQpFOjMnWbgfYwRzw';
+ //L.mapbox.accessToken = 'pk.eyJ1IjoiYS10b21iYXJnZSIsImEiOiJjamRkdXM3ZG0wM3M2MnFtMjZsMnVibDB5In0.iJk8JWQpFOjMnWbgfYwRzw';
 
-  var map = L.mapbox.map('map', 'mapbox.streets-basic', {
+  // var map = L.mapbox.map('map', 'mapbox.streets-basic', {
+  //   center: [38.016, -79.69],
+  //   zoom: 7.5,
+  //   minZoom: 7,
+  //   maxZoom: 14,
+  //   zoomControl: false,
+  //   zoomSnap: 1
+  //   // maxBounds: L.latLngBounds([39, -85], [36, -70])
+
+  // });
+
+  var map = L.map('map', {
     center: [38.016, -79.69],
     zoom: 7.5,
     minZoom: 7,
     maxZoom: 14,
     zoomControl: false,
     zoomSnap: 1
-    // maxBounds: L.latLngBounds([39, -85], [36, -70])
+  })
 
-  });
+  var tiles = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/light_all/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+    subdomains: 'abcd',
+    maxZoom: 19
+  }).addTo(map);
 
   L.control.zoom({
     position: 'topright'
@@ -21,6 +36,7 @@
   var countiesData = $.getJSON('data/va-counties.geojson'),
       easementsData = $.getJSON('data/dcr-easements.json'),
       cpEasementsData = $.getJSON('data/cp-easements-list1.geojson');
+
 
   // use jQuery promise to wait until they're all loaded
   $.when(countiesData, easementsData, cpEasementsData).done(ready);
