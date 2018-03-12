@@ -93,7 +93,7 @@
       },
       onEachFeature(feature, layer) {
         //console.log(feature.properties.cp_listacr)
-        //build CP easement tooltip
+        //build CP easement tooltips
         var toolTipInfo = "<b>County:</b> " + feature.properties.county + "<br><b>Acreage:</b> " + 
                           feature.properties.cp_listacr + "<br><b>Holder:</b> " + feature.properties.cp_listhol +
                           "<br><b>Conservation Values:</b> " + feature.properties.cp_listcon + 
@@ -101,6 +101,21 @@
         layer.bindTooltip(toolTipInfo, {
           sticky: true,
           toolTipAnchor: [200,200]
+        });
+
+        layer.on('mouseover', function() {
+          // change the stroke color and bring that element to the front
+          layer.setStyle({
+            color: '#ffff4d',
+            weight: 2
+          }).bringToFront();
+        });
+        // on mousing off layer
+        layer.on('mouseout', function() {
+          // reset the layer style to its original stroke color
+          layer.setStyle({
+            color: '#fc2a2a'
+          });
         });
       }
     }).addTo(map);
