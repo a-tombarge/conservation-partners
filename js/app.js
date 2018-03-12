@@ -107,6 +107,9 @@
 
     // select the UI slider
     $("#slider").on("input change", function(res) {
+      
+      // code will repeat with each slider change
+
       console.log(res.target.value)
 
       cpEasements.eachLayer(function(layer) {

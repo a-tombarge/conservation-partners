@@ -7,3 +7,10 @@
 .side-col {
   z-index: 900;
 }
+
+
+@media screen and (min-width: 800px) {
+  .w480-ml {
+    width: 480px !important;
+  }
+}
