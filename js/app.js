@@ -25,7 +25,8 @@
   // use jQuery promise to wait until they're all loaded
   $.when(countiesData, easementsData, cpEasementsData).done(ready);
 
-  // function called when data are loaded and ready
+  // function called when data are loaded and ready 
+  // essentially the drawMap function?
   function ready(countiesData, easementsData, cpEasementsData) {
 
       // data are all now loaded and accessible within this function
