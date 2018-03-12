@@ -21,8 +21,16 @@
   
   $.getJSON('data/cp-easements-list1.geojson', function(cpEasements){
     //console.log(cpEasements);
-    L.geoJson(cpEasements).addTo(map);
-
+    L.geoJson(cpEasements, {
+      style: function(feature){
+        return {
+          color: '#fc2a2a',
+          weight: 0.5,
+          fillOpacity: 1,
+          fillColor: '#fc2a2a'
+        };
+      }
+    }).addTo(map);
   })
 
   $.getJSON('data/va-counties.geojson', function(counties){
@@ -31,15 +39,28 @@
     L.geoJson(counties, {
       style: function(feature) {
         return {
-        color: '#A9A9A9',
+        color: '#999999',
         weight: 1.5,
         fillOpacity: 0 
         };
       }
     }).addTo(map);
-
   })
 
+  $.getJSON('data/dcr-easements-topojson.json', function(dcrEasements){
+    L.geoJson(dcrEasements, {
+      style: function(feature) {
+        return {
+        color: '#e3fce5',
+        weight: 0.5,
+        fillOpacity: 1,
+        fillColor: '#e3fce5'
+        };
+      }
+    }).addTo(map);
+  })
+  
+  
   //omnivore.topojson('data/dcr-easements-topojson.json').addTo(map); 
 
  
