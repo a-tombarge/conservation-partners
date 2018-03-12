@@ -53,15 +53,40 @@
 
   function drawCounties(countiesData) {
 
-    L.geoJson(countiesData, {
+    var countiesList = []
+
+    var counties = L.geoJson(countiesData, {
       style: function (feature) {
         return {
           color: '#999999',
           weight: 1.5,
           fillOpacity: 0
         };
+      },
+      filter: function(feature) {
+        countiesList.push(feature.properties.NAME)
+        return feature
       }
     }).addTo(map);
+
+    searchByCounty(counties, countiesList)
+
+
+  }
+
+  function searchByCounty(counties, countiesList) {
+
+    // user searches for county name
+    // they select "Nottoway"
+    var searchName = "Nottoway"
+    counties.eachLayer(function(layer) {
+      // if selected name is equal to layer name
+      if(layer.feature.properties.NAME === searchName) {
+        // get bounding box of layer
+        // zoom to that bounding box
+        // maybe highlight the border
+      }
+    })
 
   }
 
