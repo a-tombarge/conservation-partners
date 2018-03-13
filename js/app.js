@@ -81,7 +81,25 @@
                           feature.properties.TOTALACRE + "<br><b>Holder:</b> " + feature.properties.LABEL +
                           "<br><b>Year Placed in Easement:</b> " + feature.properties.ACQDATE + 
                           "<br><b>Is public access allowed? </b>" + feature.properties.PUBACCESS;
+        
         layer.bindPopup(popupInfo);          
+      
+        // //when mousing over layer
+        // layer.on('mouseover', function() {
+        //   //change the stroke color
+        //   layer.setStyle({
+        //     color: '#ffff4d',
+        //     weight: 2
+        //   }).bringToFront();
+        // });
+        
+        // //when mousing off layer
+        // layer.on('mouseout', function() {
+        //   // reset the layer style to its original stroke color
+        //   layer.setStyle({
+        //     color: '#ffc966'
+        //   });
+        // });
       }  
     }).addTo(map);
 
@@ -132,27 +150,28 @@
       }
     }).addTo(map);
     
-    //filterByYear(cpEasements)
+    filterByYear(cpEasements)
   
   } //end of drawcpEasements function
 
-  // function filterByYear(cpEasements) {
+  function filterByYear(cpEasements) {
 
-  //   // select the UI slider
-  //   $("#slider").on("input change", function(res) {
+    // select the UI slider
+    $("#slider").on("input change", function(res) {
       
-  //     // code will repeat with each slider change
+      // code will repeat with each slider change
 
-  //     console.log(res.target.value)
+      console.log(res.target.value)
 
-  //     cpEasements.eachLayer(function(layer) {
-  //       console.log(layer.feature.properties)
-  //       // if(feature properties year is equal the current selected value)
-  //       // then show easement
-  //       // else hide easement
-  //     })
-  //   });
-  // }
+      cpEasements.eachLayer(function(layer) {
+        
+        console.log(layer.feature.properties)
+        // if(feature properties year is equal the current selected value)
+        // then show easement
+        // else hide easement
+      })
+    });
+  }
  
  
 })(); //end of master function

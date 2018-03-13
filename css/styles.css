@@ -1,9 +1,4 @@
 
-/* turn off the Mapbox logo */
-.mapbox-logo {
-  display: none; 
-}
-
 /*ensure the side column loads last*/
 .side-col {
   z-index: 900;
