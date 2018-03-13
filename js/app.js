@@ -42,6 +42,7 @@
 
   function drawCounties(countiesData) {
 
+    //empty array to hold the county names
     var countiesList = []
 
     var counties = L.geoJson(countiesData, {
@@ -62,22 +63,30 @@
 
   } //end of drawCounties function 
 
-     
+  // add conservation easements to map 
   function drawEasements(easementsData) {
 
     L.geoJson(easementsData, {
       style: function (feature) {
         return {
-          color: '#9feaf9',
+          color: '#ffc966',
           weight: 0.3,
           fillOpacity: 0.5,
-          fillColor: '#9feaf9'
+          fillColor: '#ffc966'
         };
-      }
+      },
+      onEachFeature(feature, layer) {
+        //console.log(feature.properties)
+        var popupInfo = "<b>County:</b> " + feature.properties.county + "<br><b>Acreage:</b> " + 
+                          feature.properties.TOTALACRE + "<br><b>Holder:</b> " + feature.properties.LABEL +
+                          "<br><b>Year Placed in Easement:</b> " + feature.properties.ACQDATE + 
+                          "<br><b>Is public access allowed? </b>" + feature.properties.PUBACCESS;
+        layer.bindPopup(popupInfo);          
+      }  
     }).addTo(map);
 
 
-  }
+  }//end of drawEasements function
   
   //add CP easements to map
   function drawcpEasements(cpEasementsData) {
@@ -93,24 +102,27 @@
       },
       onEachFeature(feature, layer) {
         //console.log(feature.properties.cp_listacr)
+        
         //build CP easement tooltips
         var toolTipInfo = "<b>County:</b> " + feature.properties.county + "<br><b>Acreage:</b> " + 
                           feature.properties.cp_listacr + "<br><b>Holder:</b> " + feature.properties.cp_listhol +
                           "<br><b>Conservation Values:</b> " + feature.properties.cp_listcon + 
-                          "<br><b>Year Placed in Easement:</b> " + feature.properties.year;
+                          "<br><b>Year Placed in an Easement:</b> " + feature.properties.year;
         layer.bindTooltip(toolTipInfo, {
           sticky: true,
           toolTipAnchor: [200,200]
         });
 
+        //when mousing over layer
         layer.on('mouseover', function() {
-          // change the stroke color and bring that element to the front
+          //change the stroke color
           layer.setStyle({
             color: '#ffff4d',
             weight: 2
           }).bringToFront();
         });
-        // on mousing off layer
+        
+        //when mousing off layer
         layer.on('mouseout', function() {
           // reset the layer style to its original stroke color
           layer.setStyle({
@@ -119,10 +131,10 @@
         });
       }
     }).addTo(map);
-
+    
     //filterByYear(cpEasements)
-
-  }
+  
+  } //end of drawcpEasements function
 
   // function filterByYear(cpEasements) {
 
