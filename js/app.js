@@ -156,6 +156,19 @@
 
   function filterByYear(cpEasements) {
 
+    sliderControl.onAdd = function (map) {
+    
+      var controls = L.DomUtil.get("slider");
+    
+      L.DomEvent.disableScrollPropagation(controls);
+      L.DomEvent.disableClickPropagation(controls);
+    
+      return controls;
+    }
+    
+    // add it to the map
+    sliderControl.addTo(map);
+
     // select the UI slider
     $("#slider").on("input change", function(res) {
       
