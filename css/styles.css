@@ -10,3 +10,9 @@
     width: 480px !important;
   }
 }
+
+@media screen and (min-width: 800px) {
+  .hmax460 {
+    height: 460px !important;
+  }
+}
