@@ -40,6 +40,7 @@
   } //end of drawMap function
 
 
+  //drawing my VA counties layer
   function drawCounties(countiesData) {
 
     //empty array to hold the county names
@@ -66,7 +67,7 @@
 
   } //end of drawCounties function 
 
-  // add conservation easements to map 
+  //add VA conservation easements to map 
   function drawEasements(easementsData) {
 
     L.geoJson(easementsData, {
@@ -167,41 +168,35 @@
     //test to see if the data layer loads
     //console.log(cpEasements);
     
-    // //creating slider control and adding it to my map
-    // var sliderControl = L.control({
-    //       position: 'centerleft'
-    //     });
+    //creating slider control and settings
+    var sliderControl = L.control({
+          position: 'centerleft'
+        });
     
-    // sliderControl.onAdd = function (map) {
+    sliderControl.onAdd = function (map) {
     
-    //   var controls = L.DomUtil.get("slider");
+      var controls = L.DomUtil.get("slider");
     
-    //   L.DomEvent.disableScrollPropagation(controls);
-    //   L.DomEvent.disableClickPropagation(controls);
+      L.DomEvent.disableScrollPropagation(controls);
+      L.DomEvent.disableClickPropagation(controls);
     
-    //   return controls;
-    // }
+      return controls;
+    }
     
-    // // add it to the map
-    // sliderControl.addTo(map);
+    // add it to the map
+    sliderControl.addTo(map);
 
     
     //array to store my years
     var yearsList = [];
 
-    cpEasements.eachlayer(function(layer) {
-      var year = layer.feature.properties.year;
-      yearsList.push(year);
-    
+    feature.properties.forEach(function(easementYear) {
+      for (var year in feature.properties) {
+        if(property === "year") {
+          yearsList.push(Number(feature.properties[year]));
+        }
+      }
     });
-      
-    //   feature.properties.forEach(function(easementYear) {
-    //   for (var property in feature.properties) {
-    //     if(property === "year") {
-    //       yearsList.push(Number(feature.properties[property]));
-    //     }
-    //   }
-    // });
   
     console.log(yearsList);
 
