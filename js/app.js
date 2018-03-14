@@ -57,7 +57,10 @@
         countiesList.push(feature.properties.NAME)
         return feature
       }
+     
     }).addTo(map);
+
+    //console.log(countiesList);
 
     //searchByCounty(counties, countiesList)
 
@@ -122,7 +125,7 @@
         };
       },
       onEachFeature(feature, layer) {
-        //console.log(feature.properties.cp_listacr)
+        console.log(feature.properties.cp_listacr)
         
         //build CP easement tooltips
         var toolTipInfo = "<b>County:</b> " + feature.properties.county + "<br><b>Acreage:</b> " + 
@@ -151,46 +154,56 @@
           });
         });
       }
+      
     }).addTo(map); 
   
-    filterByYear(cpEasements)
+    filterByYear(cpEasements);
   
   } //end of drawcpEasements function
 
   //slider filtering by year and totaling acreage per year
   function filterByYear(cpEasements) {
+
+    //test to see if the data layer loads
+    //console.log(cpEasements);
     
-    //creating slider control and adding it to my map
-    var sliderControl = L.control({
-          position: 'centerleft'
-        });
+    // //creating slider control and adding it to my map
+    // var sliderControl = L.control({
+    //       position: 'centerleft'
+    //     });
     
-    sliderControl.onAdd = function (map) {
+    // sliderControl.onAdd = function (map) {
     
-      var controls = L.DomUtil.get("slider");
+    //   var controls = L.DomUtil.get("slider");
     
-      L.DomEvent.disableScrollPropagation(controls);
-      L.DomEvent.disableClickPropagation(controls);
+    //   L.DomEvent.disableScrollPropagation(controls);
+    //   L.DomEvent.disableClickPropagation(controls);
     
-      return controls;
-    }
+    //   return controls;
+    // }
     
-    // add it to the map
-    sliderControl.addTo(map);
+    // // add it to the map
+    // sliderControl.addTo(map);
 
     
     //array to store my years
-    var years = [];
+    var yearsList = [];
 
-    feature.properties.forEach(function(easementYear) {
-      for (var property in feature.properties) {
-        if(property === "year") {
-          years.push(Number(feature.properties[property]));
-        }
-      }
+    cpEasements.eachlayer(function(layer) {
+      var year = layer.feature.properties.year;
+      yearsList.push(year);
+    
     });
+      
+    //   feature.properties.forEach(function(easementYear) {
+    //   for (var property in feature.properties) {
+    //     if(property === "year") {
+    //       yearsList.push(Number(feature.properties[property]));
+    //     }
+    //   }
+    // });
   
-    console.log(years);
+    console.log(yearsList);
 
 
     // // select the UI slider
