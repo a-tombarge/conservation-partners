@@ -126,7 +126,7 @@
         };
       },
       onEachFeature(feature, layer) {
-        console.log(feature.properties.cp_listacr)
+        //console.log(feature.properties.year)
         
         //build CP easement tooltips
         var toolTipInfo = "<b>County:</b> " + feature.properties.county + "<br><b>Acreage:</b> " + 
@@ -158,47 +158,47 @@
       
     }).addTo(map); 
   
-    filterByYear(cpEasements);
+    filterByYear(cpEasementsData);
   
   } //end of drawcpEasements function
 
   //slider filtering by year and totaling acreage per year
-  function filterByYear(cpEasements) {
-
-    //test to see if the data layer loads
-    //console.log(cpEasements);
+  function filterByYear(cpEasementsData) {
     
-    //creating slider control and settings
-    var sliderControl = L.control({
-          position: 'centerleft'
-        });
+    // //creating slider control and settings
+    // var sliderControl = L.control({
+    //       position: 'centerleft'
+    //     });
     
-    sliderControl.onAdd = function (map) {
+    // sliderControl.onAdd = function (map) {
     
-      var controls = L.DomUtil.get("slider");
+    //   var controls = L.DomUtil.get("slider");
     
-      L.DomEvent.disableScrollPropagation(controls);
-      L.DomEvent.disableClickPropagation(controls);
+    //   L.DomEvent.disableScrollPropagation(controls);
+    //   L.DomEvent.disableClickPropagation(controls);
     
-      return controls;
-    }
+    //   return controls;
+    // }
     
-    // add it to the map
-    sliderControl.addTo(map);
+    // // add it to the map
+    // sliderControl.addTo(map);
 
     
     //array to store my years
     var yearsList = [];
 
-    feature.properties.forEach(function(easementYear) {
-      for (var year in feature.properties) {
-        if(property === "year") {
-          yearsList.push(Number(feature.properties[year]));
-        }
-      }
-    });
+
+
+    console.log(features.properties.year);
+    // cpEasementsData.features.properties.forEach( {
+    //   for (var year of cpEasementsData.features.properties) {
+    //       console.log(year);
+          //yearsList.push(features.properties[year]);
+      
+    //   }
+    // });
   
-    console.log(yearsList);
+    
 
 
     // // select the UI slider
