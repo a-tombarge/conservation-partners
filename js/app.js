@@ -61,8 +61,6 @@
      
     }).addTo(map);
 
-    //console.log(countiesList);
-
     //searchByCounty(counties, countiesList)
 
   } //end of drawCounties function 
@@ -116,7 +114,7 @@
   //add CP easements to map
   function drawcpEasements(cpEasementsData) {
 
-    var cpEasements = L.geoJson(cpEasementsData, {
+    var cpEasementsLayer = L.geoJson(cpEasementsData, {
       style: function (feature) {
         return {
           color: '#fc2a2a',
@@ -133,6 +131,7 @@
                           feature.properties.cp_listacr + "<br><b>Holder:</b> " + feature.properties.cp_listhol +
                           "<br><b>Conservation Values:</b> " + feature.properties.cp_listcon + 
                           "<br><b>Year Placed in an Easement:</b> " + feature.properties.year;
+        
         layer.bindTooltip(toolTipInfo, {
           sticky: true,
           toolTipAnchor: [200,200]
@@ -158,38 +157,17 @@
       
     }).addTo(map); 
   
-    filterByYear(cpEasementsData);
+    filterByYear(cpEasementsLayer);
   
   } //end of drawcpEasements function
 
   //slider filtering by year and totaling acreage per year
-  function filterByYear(cpEasementsData) {
+  function filterByYear(cpEasementsLayer) {
     
-    // //creating slider control and settings
-    // var sliderControl = L.control({
-    //       position: 'centerleft'
-    //     });
-    
-    // sliderControl.onAdd = function (map) {
-    
-    //   var controls = L.DomUtil.get("slider");
-    
-    //   L.DomEvent.disableScrollPropagation(controls);
-    //   L.DomEvent.disableClickPropagation(controls);
-    
-    //   return controls;
-    // }
-    
-    // // add it to the map
-    // sliderControl.addTo(map);
-
-    
-    //array to store my years
-    var yearsList = [];
 
 
 
-    console.log(features.properties.year);
+   //console.log(features.properties.year);
     // cpEasementsData.features.properties.forEach( {
     //   for (var year of cpEasementsData.features.properties) {
     //       console.log(year);
@@ -197,30 +175,34 @@
       
     //   }
     // });
-  
-    
 
+    // create an empty layer group
+    var hiddenLayers = L.layerGroup();
 
-    // // select the UI slider
-    // $("#slider").on("input change", function(res) {
+    // select the UI slider and on change
+    $("#slider").on("input change", function(res) {
       
-    //   // code will repeat with each slider change
-
-    //   console.log(res.target.value)
-
-    //   cpEasements.eachLayer(function(layer) {
+      // loop through the layers
+      cpEasementsLayer.eachLayer(function(layer) {
         
-    //     // console.log(layer.feature.properties)
-         
-    //     // if (layer.feature.properties.year = currentYear) {
-    //     //   // if(feature properties year is equal the current selected value)
-    //     //   // then show easement
-    //     // } else {
-    //     //  // else hide easement 
-    //     // }
+        if (layer.feature.properties.year != res.target.value) {
+
+          layer.setStyle({
+            opacity: 0,
+            fillOpacity: 0
+          })
+
+        } else {
+
+          layer.setStyle({
+            opacity: 1,
+            fillOpacity: 1
+          })
+
+        }
                 
-    //   })
-    // });
+      })
+    });
   } //end filterByYear function
 
 
