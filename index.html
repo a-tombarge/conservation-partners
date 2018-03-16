@@ -44,11 +44,10 @@
                     &nbsp;
                     <!-- ui slider - basic setup -->
                     <div id='slider' class='range w240 bg-white border border--gray-light round px12'>
-                        <input type='range' min="2001" , max="2017" , value="1" , step="1" />
+                        <input disabled id='slider-input' type='range' min="2001" , max="2017" , value="2001" , step="1" />
                     </div>
-                    <button type= "button" onclick="reset-slider('#slider')">Reset slider</button>
-                    &nbsp;
-                    <p><br>Search box too</p>
+                    <button id='reset-slider' class='btn round my12'>Filter by Year</button>
+                    <p>Search box too</p>
                     &nbsp;
                     <footer class='px12 py12 bg-gray-faint round-b-ml txt-s'>
                         <p>This is where my data citations and links will go.</p>

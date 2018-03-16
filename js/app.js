@@ -169,11 +169,37 @@
 
     // select the UI slider and on change
     $("#slider").on("input change", function(res) {
-      
+    
+      var currentYear = res.target.value;
+      updateLayers(currentYear)
+
+    });
+
+    var filtering = false;
+
+    $("#reset-slider").click(function() {
+      if(filtering === false) {
+        $("#slider-input").removeAttr("disabled")
+        $("#reset-slider").html("View all years")
+        updateLayers("2001")
+        filtering = true
+      } else {
+        $("#slider-input").attr("disabled", true)
+        $("#reset-slider").html("Filter by year")
+        filtering = false
+        $("#Year span").html("2001 - 2017")
+        resetLayers()
+      }
+    })
+
+    function updateLayers(currentYear) {
+      // update year
+      $("#Year span").html(currentYear)
+
       // loop through the layers
       cpEasementsLayer.eachLayer(function(layer) {
         
-        if (layer.feature.properties.year != res.target.value) {
+        if (layer.feature.properties.year != currentYear) {
 
           layer.setStyle({
             opacity: 0.2,
@@ -190,7 +216,16 @@
         }
                 
       })
-    });
+    }
+
+    function resetLayers() {
+      cpEasementsLayer.eachLayer(function(layer) {
+        layer.setStyle({
+          opacity: 1,
+          fillOpacity: 1
+        })
+      })
+    }
     
     //code taken from an example of how to reset a slider: https://stackoverflow.com/questions/9331728/how-to-reset-a-jquery-ui-slider
     // var resetSlider = function(sliderSelector) {
