@@ -61,7 +61,8 @@
      
     }).addTo(map);
 
-    //searchByCounty(counties, countiesList)
+    searchByCounty(counties, countiesList)
+
 
   } //end of drawCounties function 
 
@@ -235,11 +236,49 @@
         })
       })
     }
-    
-
-
+  
    
   } //end filterByYear function
+
+  function searchByCounty(counties, countyList) {
+
+    new autoComplete({
+      selector: 'input[name="search"]',
+      minChars: 2,
+      source: function(term, suggest){
+          term = term.toLowerCase();
+          var choices = countyList;
+          var matches = [];
+          for (i=0; i<choices.length; i++)
+              if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
+          suggest(matches);
+      },
+      onSelect: function(event, term, item) {
+
+        zoomToCounty(term);
+      }
+    });
+
+
+    function zoomToCounty(term) {
+
+      counties.eachLayer(function(layer) {
+        if(layer.feature.properties.NAME === term) {
+   
+          map.flyToBounds(layer.getBounds())
+          layer.setStyle({
+            color: "yellow",
+            weight: 4
+          })
+        }
+
+      });
+
+
+    }
+
+
+  }
 
 
 })(); //end of master function
