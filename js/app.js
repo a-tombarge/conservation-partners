@@ -192,14 +192,16 @@
       })
     });
     
-    //code taken from an example of how to reset a slider
-    var resetSlider = function(sliderSelector) {
-      $(sliderSelector).each(function(){
-        var options = $(this).slider('option');
-        $(this).slider('values', [options.min, options.max]);
-      }); 
-    };
+    //code taken from an example of how to reset a slider: https://stackoverflow.com/questions/9331728/how-to-reset-a-jquery-ui-slider
+    // var resetSlider = function(sliderSelector) {
+    //   $(sliderSelector).each(function(){
+    //     var options = $(this).slider('option');
+    //     $(this).slider('//how do I reference the slider values?', [options.min]);
+    //   }); 
+    // };
 
+
+   
   } //end filterByYear function
 
 
