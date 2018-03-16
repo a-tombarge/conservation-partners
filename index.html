@@ -31,10 +31,12 @@
                         what we've done to help protect Virginia's remaining open space.</p>
                     &nbsp;
                     <!-- box for the year and acreage totals. Would like to give total values as default? Is this possible? -->
-                    <div id='YearAcreage' class='px3 bg-white'>
+                    <div id='Year' class='px3 bg-white'>
                         <h3 class="txt-bold mb12">Year:
                             <span>2001-2017</span>
                         </h3>
+                    </div>
+                    <div id='Acreage'>
                         <h3 class="txt-bold mb12">Acreage:
                             <span>42,108</span>
                         </h3>
@@ -44,6 +46,7 @@
                     <div id='slider' class='range w240 bg-white border border--gray-light round px12'>
                         <input type='range' min="2001" , max="2017" , value="1" , step="1" />
                     </div>
+                    <button type= "button" onclick="reset-slider('#slider')">Reset slider</button>
                     &nbsp;
                     <p><br>Search box too</p>
                     &nbsp;

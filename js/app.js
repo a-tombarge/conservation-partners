@@ -162,19 +162,7 @@
   } //end of drawcpEasements function
 
   //slider filtering by year and totaling acreage per year
-  function filterByYear(cpEasementsLayer) {
-    
-
-
-
-   //console.log(features.properties.year);
-    // cpEasementsData.features.properties.forEach( {
-    //   for (var year of cpEasementsData.features.properties) {
-    //       console.log(year);
-          //yearsList.push(features.properties[year]);
-      
-    //   }
-    // });
+  function filterByYear(cpEasementsLayer) { 
 
     // create an empty layer group
     var hiddenLayers = L.layerGroup();
@@ -188,8 +176,8 @@
         if (layer.feature.properties.year != res.target.value) {
 
           layer.setStyle({
-            opacity: 0,
-            fillOpacity: 0
+            opacity: 0.2,
+            fillOpacity: 0.2
           })
 
         } else {
@@ -203,8 +191,39 @@
                 
       })
     });
+    
+    //code taken from an example of how to reset a slider
+    var resetSlider = function(sliderSelector) {
+      $(sliderSelector).each(function(){
+        var options = $(this).slider('option');
+        $(this).slider('values', [options.min, options.max]);
+      }); 
+    };
+
   } //end filterByYear function
 
 
+
+  function acreageByYear(cpEasementsData) {
+
+    var cpYears = [],
+        acreageByYear = [],
+        uniqueYear = {},
+        props,
+        size,
+        rendered = ""
+
+
+    for (i = 0; i < cpEasementsData.feature.length; i++) {
+        props = cpEasementsData.feature[i].properties;
+
+        if (!(props.year in unique)) {
+            uniqueYear[props.year] = true;
+            cpYears.push([props.year]);
+        }
+      } 
+    console.log(cpYears);
+
+  } //end
 
 })(); //end of master function
