@@ -61,7 +61,8 @@
      
     }).addTo(map);
 
-    //searchByCounty(counties, countiesList)
+    searchByCounty(counties, countiesList)
+
 
   } //end of drawCounties function 
 
@@ -169,11 +170,39 @@
 
     // select the UI slider and on change
     $("#slider").on("input change", function(res) {
-      
+    
+      var currentYear = res.target.value;
+      updateLayers(currentYear)
+
+    });
+
+    var filtering = false;
+
+    $("#reset-slider").click(function() {
+      if(filtering === false) {
+        $("#slider-input").removeAttr("disabled")
+        $("#reset-slider").html("View all years")
+        updateLayers("2001")
+        filtering = true
+      } else {
+        $("#slider-input").attr("disabled", true)
+        $("#reset-slider").html("Filter by year")
+        filtering = false
+        $("#Year span").html("2001 - 2017")
+        resetLayers()
+      }
+    })
+
+    function updateLayers(currentYear) {
+      // update year
+      $("#Year span").html(currentYear)
+
+      var totalAcreage = 0;
+
       // loop through the layers
       cpEasementsLayer.eachLayer(function(layer) {
         
-        if (layer.feature.properties.year != res.target.value) {
+        if (layer.feature.properties.year != currentYear) {
 
           layer.setStyle({
             opacity: 0.2,
@@ -181,7 +210,9 @@
           })
 
         } else {
-
+          
+          totalAcreage += Number(layer.feature.properties.cp_listacr)
+          
           layer.setStyle({
             opacity: 1,
             fillOpacity: 1
@@ -190,42 +221,64 @@
         }
                 
       })
-    });
-    
-    //code taken from an example of how to reset a slider: https://stackoverflow.com/questions/9331728/how-to-reset-a-jquery-ui-slider
-    // var resetSlider = function(sliderSelector) {
-    //   $(sliderSelector).each(function(){
-    //     var options = $(this).slider('option');
-    //     $(this).slider('//how do I reference the slider values?', [options.min]);
-    //   }); 
-    // };
+
+      // update Acreage in DOM
+      $("#Acreage span").html(totalAcreage.toLocaleString())
 
 
+    }
+
+    function resetLayers() {
+      cpEasementsLayer.eachLayer(function(layer) {
+        layer.setStyle({
+          opacity: 1,
+          fillOpacity: 1
+        })
+      })
+    }
+  
    
   } //end filterByYear function
 
+  function searchByCounty(counties, countyList) {
+
+    new autoComplete({
+      selector: 'input[name="search"]',
+      minChars: 2,
+      source: function(term, suggest){
+          term = term.toLowerCase();
+          var choices = countyList;
+          var matches = [];
+          for (i=0; i<choices.length; i++)
+              if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
+          suggest(matches);
+      },
+      onSelect: function(event, term, item) {
+
+        zoomToCounty(term);
+      }
+    });
 
 
-  function acreageByYear(cpEasementsData) {
+    function zoomToCounty(term) {
 
-    var cpYears = [],
-        acreageByYear = [],
-        uniqueYear = {},
-        props,
-        size,
-        rendered = ""
-
-
-    for (i = 0; i < cpEasementsData.feature.length; i++) {
-        props = cpEasementsData.feature[i].properties;
-
-        if (!(props.year in unique)) {
-            uniqueYear[props.year] = true;
-            cpYears.push([props.year]);
+      counties.eachLayer(function(layer) {
+        if(layer.feature.properties.NAME === term) {
+   
+          map.flyToBounds(layer.getBounds())
+          layer.setStyle({
+            color: "yellow",
+            weight: 4
+          })
         }
-      } 
-    console.log(cpYears);
 
-  } //end
+      });
+
+
+    }
+
+
+  }
+
 
 })(); //end of master function

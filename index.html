@@ -8,6 +8,7 @@
 
     <link href='https://api.mapbox.com/mapbox-assembly/v0.21.0/assembly.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
+    <link href='css/auto-complete.css' rel='stylesheet' />
     <link href='css/styles.css' rel='stylesheet' />
 </head>
 
@@ -44,11 +45,10 @@
                     &nbsp;
                     <!-- ui slider - basic setup -->
                     <div id='slider' class='range w240 bg-white border border--gray-light round px12'>
-                        <input type='range' min="2001" , max="2017" , value="1" , step="1" />
+                        <input disabled id='slider-input' type='range' min="2001" , max="2017" , value="2001" , step="1" />
                     </div>
-                    <button type= "button" onclick="reset-slider('#slider')">Reset slider</button>
-                    &nbsp;
-                    <p><br>Search box too</p>
+                    <button id='reset-slider' class='btn round my12'>Filter by Year</button>
+                    <input name="search" class='input' placeholder='search by county' />
                     &nbsp;
                     <footer class='px12 py12 bg-gray-faint round-b-ml txt-s'>
                         <p>This is where my data citations and links will go.</p>
@@ -63,6 +63,7 @@
     <script async defer src="https://api.mapbox.com/mapbox-assembly/v0.20.0/assembly.js"></script>
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script> 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="js/auto-complete.min.js"></script>
     <script src='js/app.js'></script>
 
 
