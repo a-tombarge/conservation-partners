@@ -170,21 +170,23 @@
 
     // select the UI slider and on change
     $("#slider").on("input change", function(res) {
-    
+      
       var currentYear = res.target.value;
       updateLayers(currentYear)
 
     });
 
+    //creating variable for the filter and setting it to false initially
     var filtering = false;
 
+    //selecting the reset-slider button 
     $("#reset-slider").click(function() {
-      if(filtering === false) {
-        $("#slider-input").removeAttr("disabled")
-        $("#reset-slider").html("View all years")
-        updateLayers("2001")
-        filtering = true
-      } else {
+      if(filtering === false) { //if the fliter is set to false on click
+        $("#slider-input").removeAttr("disabled") //enable the slider
+        $("#reset-slider").html("View all years") //change button label to view all years
+        updateLayers("2001") //update the layers to show starting year
+        filtering = true //filter is now set to true
+      } else { 
         $("#slider-input").attr("disabled", true)
         $("#reset-slider").html("Filter by year")
         filtering = false
@@ -201,7 +203,7 @@
 
       // loop through the layers
       cpEasementsLayer.eachLayer(function(layer) {
-        
+        //if the current selection doesn't match currentYear, make other easements opaque
         if (layer.feature.properties.year != currentYear) {
 
           layer.setStyle({
@@ -209,7 +211,7 @@
             fillOpacity: 0.2
           })
 
-        } else {
+        } else { //otherwise total up the acreage and make the selected easements solid red
           
           totalAcreage += Number(layer.feature.properties.cp_listacr)
           
@@ -217,25 +219,25 @@
             opacity: 1,
             fillOpacity: 1
           })
-
-        }
-                
+        }         
       })
 
       // update Acreage in DOM
       $("#Acreage span").html(totalAcreage.toLocaleString())
 
+    } //end of updateLayers function
 
-    }
-
+    //resetting the easement layer to show all easements once "view all years" button clicked
     function resetLayers() {
+      
       cpEasementsLayer.eachLayer(function(layer) {
         layer.setStyle({
           opacity: 1,
           fillOpacity: 1
         })
       })
-    }
+      $("#Acreage span").html("42,108")
+    } //end resetLayers function
   
    
   } //end filterByYear function
