@@ -184,7 +184,7 @@
       if(filtering === false) { //if the fliter is set to false on click
         $("#slider-input").removeAttr("disabled") //enable the slider
         $("#reset-slider").html("View all years") //change button label to view all years
-        updateLayers("2001") //update the layers to show starting year
+        updateLayers("2005") //update the layers to show starting year
         filtering = true //filter is now set to true
       } else { 
         $("#slider-input").attr("disabled", true)
