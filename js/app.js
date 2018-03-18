@@ -242,6 +242,7 @@
    
   } //end filterByYear function
 
+  //county search function
   function searchByCounty(counties, countyList) {
 
     new autoComplete({
@@ -267,7 +268,8 @@
       counties.eachLayer(function(layer) {
         if(layer.feature.properties.NAME === term) {
    
-          map.flyToBounds(layer.getBounds())
+          map.flyToBounds(layer.getBounds(), {paddingTopLeft: [350, 20]})
+          
           layer.setStyle({
             color: "yellow",
             weight: 4
