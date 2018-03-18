@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class='viewport-full relative scroll-hidden'>
+    <div class='viewport-full relative scroll-hidden'> <!--Overalll page viewport-->
         <!--<div class='bg-darken10 viewport-twothirds viewport-full-ml absolute top left right bottom'></div>-->
         
         <!-- section of page for the map -->
@@ -31,10 +31,10 @@
                     <p>Explore our work throughout Virginia. We've worked with landowners all over the state and are proud of
                         what we've done to help protect Virginia's remaining open space.</p>
                     &nbsp;
-                    <!-- box for the year and acreage totals. Would like to give total values as default? Is this possible? -->
+                    <!-- box for the year and acreage totals -->
                     <div id='Year' class='px3 bg-white'>
                         <h3 class="txt-bold mb12">Year:
-                            <span>2001-2017</span>
+                            <span>2005-2017</span>
                         </h3>
                     </div>
                     <div id='Acreage'>
@@ -44,7 +44,7 @@
                     </div>
                     <!-- ui slider - basic setup -->
                     <div id='slider' class='range w240 bg-white border border--gray-light round px12'>
-                        <input disabled id='slider-input' type='range' min="2001" , max="2017" , value="2001" , step="1" />
+                        <input disabled id='slider-input' type='range' min="2005" , max="2017" , value="2001" , step="1" />
                     </div>
                     <button id='reset-slider' class='btn round my12'>Filter Easements by Year</button>
                     <input name="search" class='input' placeholder='search by county' />

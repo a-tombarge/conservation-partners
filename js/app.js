@@ -190,7 +190,7 @@
         $("#slider-input").attr("disabled", true)
         $("#reset-slider").html("Filter by year")
         filtering = false
-        $("#Year span").html("2001 - 2017")
+        $("#Year span").html("2005 - 2017")
         resetLayers()
       }
     })
@@ -268,21 +268,21 @@
       counties.eachLayer(function(layer) {
         if(layer.feature.properties.NAME === term) {
    
-          map.flyToBounds(layer.getBounds(), {paddingTopLeft: [350, 20]})
+          map.flyToBounds(layer.getBounds(), {
+            paddingTopLeft: [350, 20]                    
+          })
           
           layer.setStyle({
-            color: "yellow",
-            weight: 4
+            color: "#006400",
+            weight: 4.5
           })
         }
 
       });
+    } //end zoomToCounty
 
 
-    }
-
-
-  }
+  } //end searchByCounty function
 
 
 })(); //end of master function
