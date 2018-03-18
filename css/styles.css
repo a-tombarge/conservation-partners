@@ -11,8 +11,7 @@
   }
 }
 
-@media screen and (min-width: 800px) {
-  .hmax460 {
-    height: 460px !important;
-  }
+.footerBar {
+  z-index: 900;
+  background: #FCFCFC;
 }

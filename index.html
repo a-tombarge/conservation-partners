@@ -21,16 +21,18 @@
             <div id="map" class='viewport-twothirds viewport-full-ml'></div>
         </div>
         
+
+        <h2 class='txt-xl txt-bold mb6 align-center'>Conservation Partners at Work Throughout Virginia</h2>
+        <h3 class='txt-l txt-bold mb6 align-center'>Our Conservation Easements</h3>
+                
+
         <!--container for the side column-->
-        <div class='absolute top-ml left bottom hmax460 w-full w480-ml px12 py12-ml side-col'>
+        <div class='absolute top-ml left bottom w-full w480-ml px12 py12-ml side-col'>
             <div class='flex-parent flex-parent--column viewport-third h-auto-ml hmax-full bg-white round-ml shadow-darken10'>
                 <div class='px12 py12 scroll-auto'>
-                    <h2 class='txt-xl txt-bold mb6 align-center'>Conservation Partners at Work Throughout Virginia</h2>
-                    <h3 class='txt-l txt-bold mb6 align-center'>Our Conservation Easements</h3>
-                    &nbsp;
                     <p>Explore our work throughout Virginia. We've worked with landowners all over the state and are proud of
                         what we've done to help protect Virginia's remaining open space.</p>
-                    &nbsp;
+                        &nbsp;
                     <!-- box for the year and acreage totals -->
                     <div id='Year' class='px3 bg-white'>
                         <h3 class="txt-bold mb12">Year:
@@ -47,15 +49,23 @@
                         <input disabled id='slider-input' type='range' min="2005" , max="2017" , value="2001" , step="1" />
                     </div>
                     <button id='reset-slider' class='btn round my12'>Filter Easements by Year</button>
+                    <hr class='txt-hr'>
+                    Search for a county:
                     <input name="search" class='input' placeholder='search by county' />
                     &nbsp;
-                    <footer class='px12 py12 bg-gray-faint round-b-ml txt-s'>
-                        <p>This is where my data citations and links will go.</p>
-                    </footer>
                 </div>
             </div>
-        </div>
+        </div> <!-- end side column div -->
        
+        <div class='absolute bottom left hmax120 w-full wmin-full footerBar'>
+            <footer class='px12 py10 round-b-ml txt-xs'>
+                <p class= 'txt-normal'> Conservation easement data obtatined from the <a target="_blank" class='link' 
+                    href='http://www.dcr.virginia.gov/natural-heritage/clinfo#use'>Virgina Department of Conservation and Recreation, Natural Heritage</a>, and county boundaries from <a target="_blank" class='link' href='https://www.census.gov/geo/maps-data/data/cbf/cbf_counties.html'>
+                    U.S. Census Bureau's </a>catorgraphic boundary shapefiles. <br> This map, data, and related graphics are for illustrative puposes only. Any property boundaries or other delieineations are 
+                    approximate. Last updated 3/18/2018.</p>
+            </footer>
+        </div>
+
     </div>
 
     <!-- loading my script libraries -->
