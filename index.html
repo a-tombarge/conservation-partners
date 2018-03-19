@@ -20,26 +20,20 @@
         <div class='flex-child flex-child--grow viewport-twothirds viewport-full-ml'>
             <div id="map" class='viewport-twothirds viewport-full-ml'></div>
         </div>
-        
-
-        <h2 class='txt-xl txt-bold mb6 align-center'>Conservation Partners at Work Throughout Virginia</h2>
-        <h3 class='txt-l txt-bold mb6 align-center'>Our Conservation Easements</h3>
-                
-
+               
         <!--container for the side column-->
         <div class='absolute top-ml left bottom w-full w480-ml px12 py12-ml side-col'>
             <div class='flex-parent flex-parent--column viewport-third h-auto-ml hmax-full bg-white round-ml shadow-darken10'>
                 <div class='px12 py12 scroll-auto'>
-                    <h2 class='txt-xl txt-bold mb6 align-center'>Conservation Partners at Work Throughout Virginia</h2>
+                    <h2 class='txt-xl-ml txt-l-mm txt-bold align-center'>Conservation Partners at Work Throughout Virginia</h2>
                     <!-- <h3 class='txt-l txt-bold mb6 align-center'>Our Conservation Easements</h3> -->
-                    <p>Explore our work around Virginia. We've worked with landowners all over the state and are proud of
+                    <p >Explore our conservation easements around Virginia. We've worked with landowners and land trusts all over the state and are proud of
                         what we've done to help protect Virginia's remaining open space.</p>
                         &nbsp;
                     <!-- box for the year and acreage totals -->
-                    <div id='Year' class='px3 bg-white'> <h3 class="txt-bold mb12">Year: <span>2005-2017</span></h3>
-                    </div>
-                    <div id='Acreage'><h3 class="txt-bold mb12">Acreage: <span>42,108</span></h3>
-                    </div>
+                    <div id='Year' class='px3 bg-white'> <h3 class="txt-m-mm txt-bold mb12">Year: <span>2005-2017</span></h3></div>
+                    <div id='Acreage'><h3 class="txt-m-mm txt-bold mb12">Acreage: <span>42,108</span></h3></div>
+                    
                     <!-- ui slider - basic setup -->
                     <div id='slider' class='range w240 bg-white border border--gray-light round px12'>
                         <input disabled id='slider-input' type='range' min="2005" , max="2017" , value="2001" , step="1" />
@@ -47,17 +41,30 @@
                     <button id='reset-slider' class='btn round my12'>Filter Easements by Year</button>
                     <hr class='txt-hr'>
                     Search for a county:
-                    <input name="search" class='input' placeholder='search by county' />
+                    <input name="search" class='input mb20' placeholder='search by county' />
+                    &nbsp;
                     &nbsp;
                 </div>
             </div>
         </div> <!-- end side column div -->
+
+        <div id ='legend' class='bg-white round px12 py12 shadow-darken10 relative'>
+            <div id='show_legend'>
+                <svg id="legendBox" class='w180 h60 mb10'>
+                    <rect x="5", y="5", height="25", width ="25", style="fill: #fc2a2a", fill-opacity: "1"></rect> 
+                    <text x="40", y="23" style= "font-size:14px">CP easements</text>
+                    <rect x="5", y="40", height="25", width ="25", style="fill: #ffc966", fill-opacity: "0.8"></rect> 
+                    <text x="40", y="57" style= "font-size:14px">Other easements</text> 
+                </svg>
+            </div>
+            <!-- <button id='legend_btn' class='btn btn--stroke round'>Legend</button> -->
+        </div>
        
         <div class='absolute bottom left hmax120 w-full wmin-full footerBar'>
             <footer class='px12 py10 round-b-ml txt-xs'>
                 <p class= 'txt-normal'> Conservation easement data obtatined from the <a target="_blank" class='link' 
                     href='http://www.dcr.virginia.gov/natural-heritage/clinfo#use'>Virgina Department of Conservation and Recreation, Natural Heritage</a>, and county boundaries from <a target="_blank" class='link' href='https://www.census.gov/geo/maps-data/data/cbf/cbf_counties.html'>
-                    U.S. Census Bureau's </a>catorgraphic boundary shapefiles. <br> This map, data, and related graphics are for illustrative puposes only. Any property boundaries or other delieineations are 
+                    U.S. Census Bureau's </a>catorgraphic boundary shapefiles. This map, data, and related graphics are for illustrative puposes only. Any property boundaries or other delieineations are 
                     approximate. Last updated 3/18/2018.</p>
             </footer>
         </div>

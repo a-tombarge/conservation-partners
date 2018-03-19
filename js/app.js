@@ -22,6 +22,29 @@
     position: 'topright'
   }).addTo(map);
 
+
+   // create Leaflet control for the legend
+  var legendControl = L.control({
+    position: 'bottomleft'
+  });
+
+  // when the control is added to the map
+  legendControl.onAdd = function (map) {
+
+    // select the legend using id attribute of legend
+    var legend = L.DomUtil.get("legend");
+
+    // disable scroll and click functionality 
+    L.DomEvent.disableScrollPropagation(legend);
+    L.DomEvent.disableClickPropagation(legend);
+
+    // return the selection
+    return legend;
+
+  }
+
+  legendControl.addTo(map);
+
   // request all data here (deferred)
   var countiesData = $.getJSON('data/va-counties.geojson'),
       easementsData = $.getJSON('data/dcr-easements.json'),
@@ -36,7 +59,9 @@
     drawCounties(countiesData);
     drawEasements(easementsData);
     drawcpEasements(cpEasementsData);
-
+    
+      
+  
   } //end of drawMap function
 
 
@@ -283,6 +308,47 @@
 
 
   } //end searchByCounty function
+
+
+  // function drawLegend(easementsData, cpEasementsData) {
+
+  //   // create Leaflet control for the legend
+  //   var legendControl = L.control({
+  //     position: 'topright'
+  //   });
+
+  //   // when the control is added to the map
+  //   legendControl.onAdd = function (map) {
+
+  //     // select the legend using id attribute of legend
+  //     var legend = L.DomUtil.get("legend");
+
+  //     // disable scroll and click functionality 
+  //     L.DomEvent.disableScrollPropagation(legend);
+  //     L.DomEvent.disableClickPropagation(legend);
+
+  //     // return the selection
+  //     return legend;
+
+  //   }
+
+  //   legendControl.addTo(map);
+
+  //   //legend collaspes into a button, on click shows the legend
+  //   $("#legend_btn").click(function(){
+  //     $("#show_legend").show();
+  //     $("#legend_btn").hide();
+  //   });
+
+  //   //clicking on legend collapses it back into a button
+  //   $("#show_legend").click(function(){
+  //       $("#show_legend").hide();
+  //       $("#legend_btn").show();
+  //   }); 
+
+
+  // } //end of drawLegend
+
 
 
 })(); //end of master function

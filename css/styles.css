@@ -9,9 +9,23 @@
   .w480-ml {
     width: 480px !important;
   }
+  .show_legend {display: block;}
+  .legend_btn { display: none;}
 }
+
+@media screen and (max-width: 799px) {
+  .show_legend {display: none;}
+  .legend_btn { display: block;}
+}
+
 
 .footerBar {
   z-index: 900;
   background: #FCFCFC;
 }
+
+/* .legendBox {
+  height: 50px;
+  max-width:240px;
+  bottom: 100px;
+} */
