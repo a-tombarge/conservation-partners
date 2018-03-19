@@ -24,8 +24,6 @@
   background: #FCFCFC;
 }
 
-/* .legendBox {
-  height: 50px;
-  max-width:240px;
-  bottom: 100px;
-} */
+#legend {
+    bottom: 25px;
+}
