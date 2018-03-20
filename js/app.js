@@ -287,7 +287,7 @@
       }
     });
 
-
+    //once search county has been selcted, function to zoom to the layer
     function zoomToCounty(term) {
 
       counties.eachLayer(function(layer) {
@@ -300,6 +300,15 @@
           layer.setStyle({
             color: "#006400",
             weight: 4.5
+          })
+
+          map.on('click', function() {
+            layer.setStyle({
+              color: '#999999',
+              weight: 1.5,
+              fillOpacity: 0
+            })
+
           })
         }
 
