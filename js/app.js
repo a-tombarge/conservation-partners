@@ -153,10 +153,10 @@
         //console.log(feature.properties.year)
         
         //build CP easement tooltips
-        var toolTipInfo = "<b>County:</b> " + feature.properties.county + "<br><b>Acreage:</b> " + 
+        var toolTipInfo = "<b>County:</b> " + feature.properties.cp_listcou + "<br><b>Acreage:</b> " + 
                           feature.properties.cp_listacr + "<br><b>Holder:</b> " + feature.properties.cp_listhol +
                           "<br><b>Conservation Values:</b> " + feature.properties.cp_listcon + 
-                          "<br><b>Year Placed in an Easement:</b> " + feature.properties.year;
+                          "<br><b>Year Placed in an Easement:</b> " + feature.properties.cp_listyea;
         
         layer.bindTooltip(toolTipInfo, {
           sticky: true,
@@ -229,7 +229,7 @@
       // loop through the layers
       cpEasementsLayer.eachLayer(function(layer) {
         //if the current selection doesn't match currentYear, make other easements opaque
-        if (layer.feature.properties.year != currentYear) {
+        if (layer.feature.properties.cp_listyea != currentYear) {
 
           layer.setStyle({
             opacity: 0.2,
