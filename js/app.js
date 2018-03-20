@@ -296,12 +296,13 @@
           map.flyToBounds(layer.getBounds(), {
             paddingTopLeft: [350, 20]                    
           })
-          
+          //set outline to green
           layer.setStyle({
             color: "#006400",
             weight: 4.5
           })
 
+          //reset outline to gray when map's clicked
           map.on('click', function() {
             layer.setStyle({
               color: '#999999',
