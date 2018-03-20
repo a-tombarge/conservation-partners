@@ -162,7 +162,7 @@
         
         //build CP easement tooltips
         var toolTipInfo = "<b>County:</b> " + feature.properties.cp_list_co + "<br><b>Acreage:</b> " + 
-                          feature.properties.cp_listac + "<br><b>Holder:</b> " + feature.properties.cp_list_ho +
+                          feature.properties.cp_list_ac + "<br><b>Holder:</b> " + feature.properties.cp_list_ho +
                           "<br><b>Conservation Values:</b> " + feature.properties.cp_list__1 + 
                           "<br><b>Year Placed in an Easement:</b> " + feature.properties.cp_list_ye;
         
