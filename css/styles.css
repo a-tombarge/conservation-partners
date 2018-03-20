@@ -23,7 +23,7 @@ body {
 }
 
 
-.footerBar {
+#footerBar {
   z-index: 900;
   background: #FCFCFC;
 }
@@ -45,6 +45,15 @@ p {
   font-family: Lato, sans-serif;
 }
 
-.reset-slider {
+#reset-slider {
   font-family: Lato, sans-serif;
+}
+
+#Year, #Acreage {
+  display: inline-block;
+}
+
+#slider {
+  margin-left: auto !important;
+  margin-right: auto !important;
 }

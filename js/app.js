@@ -107,8 +107,7 @@
         //console.log(feature.properties)
         var popupInfo = "<b>County:</b> " + feature.properties.county + "<br><b>Acreage:</b> " + 
                           feature.properties.TOTALACRE + "<br><b>Holder:</b> " + feature.properties.LABEL +
-                          "<br><b>Year Placed in Easement:</b> " + feature.properties.ACQDATE + 
-                          "<br><b>Is public access allowed? </b>" + feature.properties.PUBACCESS;
+                          "<br><b>Year Placed in Easement:</b> " + feature.properties.ACQDATE;
         
         layer.bindPopup(popupInfo);          
       
@@ -298,7 +297,7 @@
           })
           //set outline to green
           layer.setStyle({
-            color: "#006400",
+            color: "#046A38",
             weight: 4.5
           })
 
@@ -321,29 +320,7 @@
 
 
   // function drawLegend(easementsData, cpEasementsData) {
-
-  //   // create Leaflet control for the legend
-  //   var legendControl = L.control({
-  //     position: 'topright'
-  //   });
-
-  //   // when the control is added to the map
-  //   legendControl.onAdd = function (map) {
-
-  //     // select the legend using id attribute of legend
-  //     var legend = L.DomUtil.get("legend");
-
-  //     // disable scroll and click functionality 
-  //     L.DomEvent.disableScrollPropagation(legend);
-  //     L.DomEvent.disableClickPropagation(legend);
-
-  //     // return the selection
-  //     return legend;
-
-  //   }
-
-  //   legendControl.addTo(map);
-
+ 
   //   //legend collaspes into a button, on click shows the legend
   //   $("#legend_btn").click(function(){
   //     $("#show_legend").show();

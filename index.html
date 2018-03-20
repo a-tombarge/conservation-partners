@@ -25,23 +25,25 @@
         <!--container for the side column-->
         <div class='absolute top-ml left bottom w-full w480-ml px12 py12-ml side-col'>
             <div class='flex-parent flex-parent--column viewport-third h-auto-ml hmax-full bg-white round-ml shadow-darken10'>
-                <div class='px12 py12 scroll-auto'>
-                    <h2 class='txt-xl-ml txt-l-mm txt-bold align-center'>Conservation Partners at Work Throughout Virginia</h2>
+                <div class='px12 py12 scroll-auto align-center'>
+                    <h2 class='txt-xl-ml txt-l-mm txt-bold'>Conservation Partners at Work Throughout Virginia</h2>
                     <!-- <h3 class='txt-l txt-bold mb6 align-center'>Our Conservation Easements</h3> -->
-                    <p class='align-center'>Explore our conservation easements around Virginia. We've worked with landowners and land trusts all over the state and are proud of
+                    &nbsp;
+                    <p class= 'mt-neg6 mb18'> Explore our conservation easements around Virginia. We've worked with landowners and land trusts all over the state and are proud of
                         what we've done to help protect Virginia's remaining open space.</p>
-                        &nbsp;
+                        
                     <!-- box for the year and acreage totals -->
-                    <div id='Year' class='px3 bg-white'> <h3 class="txt-m-mm txt-bold mb12">Year: <span>2005-2017</span></h3></div>
-                    <div id='Acreage'><h3 class="txt-m-mm txt-bold mb12">Acreage: <span>42,108</span></h3></div>
+                    <div id='Year'> <p class='mb12 mr24'>Year: <span>2005-2017</span></p></div>  
+                    <div id='Acreage'><p class='mb12'>Acreage: <span>42,108</span></p></div>
+                    
                     
                     <!-- ui slider - basic setup -->
-                    <div id='slider' class='range w240 bg-white border border--gray-light round px12'>
-                        <input disabled id='slider-input' type='range' min="2005" , max="2017" , value="2001" , step="1" />
+                    <div id='slider' class='range w180 bg-white border border--gray-light round px12'>
+                        <input disabled id='slider-input' type='range' min="2005" , max="2017" , value="2005" , step="1" />
                     </div>
-                    <button id='reset-slider' class='btn round my12'>Filter Easements by Year</button>
+                    <button id='reset-slider' class='btn bg-gray-light-on-hover bg-green-dark round my12'>Filter Easements by Year</button>
                     <hr class='txt-hr'>
-                    Search for a county:
+                    <p class='align-l'>Search for a county:</p>
                     <input name="search" class='input mb20' placeholder='search by county' />
                     &nbsp;
                     &nbsp;
@@ -61,12 +63,13 @@
             <!-- <button id='legend_btn' class='btn btn--stroke round'>Legend</button> -->
         </div>
        
-        <div class='absolute bottom left hmax120 w-full wmin-full footerBar'>
+        <div id='footerBar' class='absolute bottom left hmax120 w-full wmin-full'>
             <footer class='px12 py10 round-b-ml txt-xs'>
                 <p class= 'txt-normal'> Conservation easement data obtatined from the <a target="_blank" class='link' 
                     href='http://www.dcr.virginia.gov/natural-heritage/clinfo#use'>Virgina Department of Conservation and Recreation, Natural Heritage</a>, with county boundaries from <a target="_blank" class='link' href='https://www.census.gov/geo/maps-data/data/cbf/cbf_counties.html'>
                     U.S. Census Bureau's </a>catorgraphic boundary shapefiles. This map, data, and related graphics are for illustrative puposes only. Any property boundaries or other delieineations are 
-                    approximate. Last updated 3/18/2018.</p>
+                    approximate. Map created by <a target="_blank" class='link' 
+                    href='https://a-tombarge.github.io/'>Alisande Tombarge</a> Last updated 3/20/2018.</p>
             </footer>
         </div>
 
