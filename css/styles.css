@@ -4,6 +4,10 @@
   z-index: 900;
 }
 
+#body {
+  font-family: Lato, sans-serif;
+}
+
 /*override the width of the side column*/
 @media screen and (min-width: 800px) {
   .w480-ml {
@@ -26,4 +30,13 @@
 
 #legend {
     bottom: 25px;
+}
+
+#h3 {
+  font-family: Crimson Text, serif;
+}
+
+
+#h2 {
+  font-family: "Crimson Text", serif;
 }
