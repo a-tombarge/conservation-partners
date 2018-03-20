@@ -161,10 +161,10 @@
         //console.log(feature.properties.year)
         
         //build CP easement tooltips
-        var toolTipInfo = "<b>County:</b> " + feature.properties.cp_listcou + "<br><b>Acreage:</b> " + 
-                          feature.properties.cp_listacr + "<br><b>Holder:</b> " + feature.properties.cp_listhol +
-                          "<br><b>Conservation Values:</b> " + feature.properties.cp_listcon + 
-                          "<br><b>Year Placed in an Easement:</b> " + feature.properties.cp_listyea;
+        var toolTipInfo = "<b>County:</b> " + feature.properties.cp_list_co + "<br><b>Acreage:</b> " + 
+                          feature.properties.cp_listac + "<br><b>Holder:</b> " + feature.properties.cp_list_ho +
+                          "<br><b>Conservation Values:</b> " + feature.properties.cp_list__1 + 
+                          "<br><b>Year Placed in an Easement:</b> " + feature.properties.cp_list_ye;
         
         layer.bindTooltip(toolTipInfo, {
           sticky: true,
@@ -217,13 +217,13 @@
       if(filtering === false) { //if the fliter is set to false on click
         $("#slider-input").removeAttr("disabled") //enable the slider
         $("#reset-slider").html("View all years") //change button label to view all years
-        updateLayers("2005") //update the layers to show starting year
+        updateLayers("2004") //update the layers to show starting year
         filtering = true //filter is now set to true
       } else { 
         $("#slider-input").attr("disabled", true)
         $("#reset-slider").html("Filter by year")
         filtering = false
-        $("#Year span").html("2005 - 2017")
+        $("#Year span").html("2004 - 2018")
         resetLayers()
       }
     })
@@ -237,7 +237,7 @@
       // loop through the layers
       cpEasementsLayer.eachLayer(function(layer) {
         //if the current selection doesn't match currentYear, make other easements opaque
-        if (layer.feature.properties.cp_listyea != currentYear) {
+        if (layer.feature.properties.cp_list_ye != currentYear) {
 
           layer.setStyle({
             opacity: 0.2,
@@ -246,7 +246,7 @@
 
         } else { //otherwise total up the acreage and make the selected easements solid red
           
-          totalAcreage += Number(layer.feature.properties.cp_listacr)
+          totalAcreage += Number(layer.feature.properties.cp_list_ac)
           
           layer.setStyle({
             opacity: 1,
@@ -269,7 +269,7 @@
           fillOpacity: 1
         })
       })
-      $("#Acreage span").html("42,108")
+      $("#Acreage span").html("54,984")
     } //end resetLayers function
   
    
