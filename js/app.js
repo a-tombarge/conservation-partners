@@ -5,7 +5,7 @@
     center: [38.016, -79.69],
     zoom: 7.5,
     minZoom: 7,
-    maxZoom: 14,
+    maxZoom: 15,
     zoomControl: false,
     zoomSnap: 1
   })
@@ -83,6 +83,11 @@
         countiesList.push(feature.properties.NAME)
         return feature
       }
+      
+
+
+
+
      
     }).addTo(map);
 

@@ -36,7 +36,6 @@ h3 {
   font-family: Lato, sans-serif;
 }
 
-
 h2 {
   font-family: Crimson Text, serif;
 }
@@ -56,4 +55,14 @@ p {
 #slider {
   margin-left: auto !important;
   margin-right: auto !important;
+}
+
+a {
+  color: #046A38;
+
+}
+
+a:hover {
+  color: #64A70B;
+  
 }
