@@ -82,13 +82,17 @@
       filter: function(feature) {
         countiesList.push(feature.properties.NAME)
         return feature
+      },
+      onEachFeature(feature, layer) {
+        //if user clicks on an area of the state, map zooms into that county
+        layer.on('click', function(){
+          
+          map.flyToBounds(layer.getBounds(), {
+            paddingTopLeft: [350, 20]                    
+          })               
+        })        
       }
-      
-
-
-
-
-     
+    
     }).addTo(map);
 
     searchByCounty(counties, countiesList)
