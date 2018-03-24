@@ -47,7 +47,7 @@
 
   // request all data here (deferred)
   var countiesData = $.getJSON('data/va-counties.geojson'),
-      easementsData = $.getJSON('data/dcr-easements.json'),
+      easementsData = $.getJSON('data/dcr-easements-final-2.json'),
       cpEasementsData = $.getJSON('data/cp-easements-list1.geojson');
 
   // use jQuery promise to wait until they're all loaded
@@ -114,7 +114,7 @@
       },
       onEachFeature(feature, layer) {
         //console.log(feature.properties)
-        var popupInfo = "<b>County:</b> " + feature.properties.county + "<br><b>Acreage:</b> " + 
+        var popupInfo = "<b>County:</b> " + feature.properties.COUNTY + "<br><b>Acreage:</b> " + 
                           feature.properties.TOTALACRE + "<br><b>Holder:</b> " + feature.properties.LABEL +
                           "<br><b>Year Placed in Easement:</b> " + feature.properties.ACQDATE;
         
@@ -139,7 +139,9 @@
             fillColor: '#ffc966'
           });
         });
-      }  
+      }
+      
+      
     }).addTo(map);
 
 
