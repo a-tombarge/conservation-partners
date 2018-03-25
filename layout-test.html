@@ -17,17 +17,26 @@
 <body>
 
     <div class='viewport-full relative scroll-hidden'>
-        <!-- <div class='bg-darken10 viewport-twothirds viewport-full-ml absolute top left right bottom'></div> -->
-        <div class='absolute top-ml left bottom z1 w-full w480-ml px12 py12-ml'>
+
+        <div class='absolute top-ml left bottom w-full w480-ml px12 py12-ml side-col'>
           <div class='flex-parent flex-parent--column viewport-third h-auto-ml hmax-full bg-white round-ml shadow-darken10'>
             <div class='px12 py12 scroll-auto align-center'>
-              <h3 class='txt-m txt-bold mb6'>Conservation Partners at Work Throughout Virginia</h3>
-              <p>Explore our conservation easements around Virginia. We've worked with landowners and land trusts all over the state and are proud of
+              <h3 class='txt-xl txt-bold mb6'>Conservation Partners at Work Throughout Virginia</h3>
+              <p class = 'mb6'>Explore our <a target="_blank" href = 'https://www.conservationpartnersllc.com/intro-to-donations'>conservation easements</a>
+                 around Virginia. We've worked with landowners and land trusts all over the state and are proud of
                 what we've done to help protect Virginia's remaining open space.</p>
-              <p>Click the button below and drag the slider to see what easements we've worked on through the years.</p>  
+              <hr class='txt-hr'>
+              <svg id="legendBox" class='w240 h60 mb10'>
+                  <rect x="5", y="5", height="20", width ="25", style="fill: #fc2a2a", fill-opacity: "1"></rect> 
+                  <text x="40", y="22" style= "font-size:13px; font-family:'Lato', sans-serif;">Conservation Partners easements</text>
+                  <rect x="5", y="40", height="20", width ="25", style="fill: #ffc966", fill-opacity: "0.8"></rect> 
+                  <text x="40", y="56" style= "font-size:13px; font-family:'Lato', sans-serif;">Other easements</text> 
+              </svg>
+              <hr class='txt-hr'>
+              <p class = 'mb6'>Our easements through the years</p>  
             
-              <div id='Year'> <p class='mb12 mr24'>Year: <span>2004-2018</span></p></div>  
-              <div id='Acreage'><p class='mb12'>Acreage: <span>54,984</span></p></div>
+              <div id='Year'> <p class='mb12 mr24 txt-bold'>Year: <span>2004-2018</span></p></div>  
+              <div id='Acreage'><p class='mb12 txt-bold'>Acreage: <span>54,984</span></p></div>
               
               
               <!-- ui slider - basic setup -->
@@ -36,21 +45,37 @@
               </div>
               <button id='reset-slider' class='btn bg-gray-light-on-hover bg-green-dark round my12'>Filter Easements by Year</button>
               <hr class='txt-hr'>
+              
               <p class='align-l'>Search for a county:</p>
               <input name="search" class='input mb30' placeholder='search by county' />
-            
-            
-            
+                    
             </div>
-            <footer class='px12 py12 bg-gray-faint round-b-ml txt-s'>
+            <footer class='px12 py12 bg-gray-faint round-b-ml txt-xs'>
                 Conservation easement data obtatined from the <a target="_blank" 
                 href='http://www.dcr.virginia.gov/natural-heritage/clinfo#use'>Virgina Department of Conservation and Recreation, Natural Heritage</a>, with county boundaries from <a target="_blank" href='https://www.census.gov/geo/maps-data/data/cbf/cbf_counties.html'>
                 U.S. Census Bureau's </a>catorgraphic boundary shapefiles. This map, data, and related graphics are for illustrative puposes only. Any property boundaries or other delineations are 
                 approximate. Map created by <a target="_blank" href='https://a-tombarge.github.io/'>Alisande Tombarge</a> for <a target="_blank"
-                href='https://www.conservationpartnersllc.com/'>Conservation Partners</a>. Last updated 3/20/2018.
+                href='https://www.conservationpartnersllc.com/'>Conservation Partners</a>. Last updated 3/25/2018.
             </footer>
           </div>
         </div>
+
+        <div class='bg-darken10 viewport-twothirds viewport-full-ml absolute top left right bottom'>
+          <div id="map" class='viewport-twothirds viewport-full-ml'></div>
+
+          
+
+          <div id ='legend'>
+          
+            <div id='show_legend'>
+                
+            </div>          
+          </div>
+
+
+
+        </div>
+        
       </div>
 
 

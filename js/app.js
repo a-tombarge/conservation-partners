@@ -330,26 +330,7 @@
     } //end zoomToCounty
 
 
-  } //end searchByCounty function
-
-
-  // function drawLegend(easementsData, cpEasementsData) {
- 
-  //   //legend collaspes into a button, on click shows the legend
-  //   $("#legend_btn").click(function(){
-  //     $("#show_legend").show();
-  //     $("#legend_btn").hide();
-  //   });
-
-  //   //clicking on legend collapses it back into a button
-  //   $("#show_legend").click(function(){
-  //       $("#show_legend").hide();
-  //       $("#legend_btn").show();
-  //   }); 
-
-
-  // } //end of drawLegend
-
+  } //end searchByCounty function   
 
 
 })(); //end of master function
