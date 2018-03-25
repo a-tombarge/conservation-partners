@@ -167,7 +167,7 @@
                           "<br><b>Year Placed in an Easement:</b> " + feature.properties.cp_list_ye;
           //checking to see if there's a donor story associated with easement
           if (layer.feature.properties.cc_story === "yes") {
-            cpPopupInfo += "<br><b>Check out their story: </b>" + layer.feature.properties.cc_story_link
+            cpPopupInfo += "<br><b>Check out their story: </b>" + layer.feature.properties.cc_story_link;
           } else {}; 
 
           layer.bindPopup(cpPopupInfo);        
