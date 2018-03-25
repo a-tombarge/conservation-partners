@@ -160,18 +160,17 @@
         };
       },
       onEachFeature(feature, layer) {
-        //console.log(feature.properties.year)
-        
-        //build CP easement tooltips
-        var toolTipInfo = "<b>County:</b> " + feature.properties.cp_list_co + "<br><b>Acreage:</b> " + 
+        //creating popup for cp easements   
+        var cpPopupInfo = "<b>County:</b> " + feature.properties.cp_list_co + "<br><b>Acreage:</b> " + 
                           feature.properties.cp_list_ac + "<br><b>Holder:</b> " + feature.properties.cp_list_ho +
                           "<br><b>Conservation Values:</b> " + feature.properties.cp_list__1 + 
                           "<br><b>Year Placed in an Easement:</b> " + feature.properties.cp_list_ye;
-        
-        layer.bindTooltip(toolTipInfo, {
-          sticky: true,
-          toolTipAnchor: [200,200]
-        });
+          //checking to see if there's a donor story associated with easement
+          if (layer.feature.properties.cc_story === "yes") {
+            cpPopupInfo += "<br><b>Check out their story: </b>" + layer.feature.properties.cc_story_link
+          } else {}; 
+
+          layer.bindPopup(cpPopupInfo);        
 
         //when mousing over layer
         layer.on('mouseover', function() {
@@ -192,6 +191,10 @@
       }
       
     }).addTo(map); 
+
+             
+
+    
   
     filterByYear(cpEasementsLayer);
   
