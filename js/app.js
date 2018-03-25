@@ -115,7 +115,7 @@
       onEachFeature(feature, layer) {
         //console.log(feature.properties)
         var popupInfo = "<b>County:</b> " + feature.properties.COUNTY + "<br><b>Acreage:</b> " + 
-                          feature.properties.TOTALACRE + "<br><b>Holder:</b> " + feature.properties.LABEL +
+                          feature.properties.TOTALACRE.toLocaleString() + "<br><b>Holder:</b> " + feature.properties.LABEL +
                           "<br><b>Year Placed in Easement:</b> " + feature.properties.ACQDATE;
         
         layer.bindPopup(popupInfo);          
@@ -162,7 +162,7 @@
       onEachFeature(feature, layer) {
         //creating popup for cp easements   
         var cpPopupInfo = "<b>County:</b> " + feature.properties.cp_list_co + "<br><b>Acreage:</b> " + 
-                          feature.properties.cp_list_ac + "<br><b>Holder:</b> " + feature.properties.cp_list_ho +
+                          feature.properties.cp_list_ac.toLocaleString() + "<br><b>Holder:</b> " + feature.properties.cp_list_ho +
                           "<br><b>Conservation Values:</b> " + feature.properties.cp_list__1 + 
                           "<br><b>Year Placed in an Easement:</b> " + feature.properties.cp_list_ye;
           //checking to see if there's a donor story associated with easement
