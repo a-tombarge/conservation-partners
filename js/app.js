@@ -171,6 +171,27 @@
           } else {}; 
 
           layer.bindPopup(cpPopupInfo);        
+        
+          // $(document).mousemove(function(e) {
+          //   // first offset from the mouse position of the cpPopupInfo 
+          //   cpPopupInfo.css({
+          //       "left": e.pageX + 6,
+          //       "top": e.pageY - cpPopupInfo.height() - 25
+          //   });
+    
+          //   // if it crashes into the top, flip it lower right
+          //   if (cpPopupInfo.offset().top < 4) {
+          //       cpPopupInfo.css({
+          //           "top": e.pageY + 15
+          //       });
+          //   }
+          //   // if it crashes into the right, flip it to the left
+          //   if (cpPopupInfo.offset().left + cpPopupInfo.width() >= $(document).width() - 40) {
+          //       cpPopupInfo.css({
+          //           "left": e.pageX - cpPopupInfo.width() - 80
+          //       });
+          //   }
+          // });
 
         //when mousing over layer
         layer.on('mouseover', function() {
