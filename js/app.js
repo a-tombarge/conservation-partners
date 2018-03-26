@@ -59,6 +59,7 @@
     drawEasements(easementsData);
     drawcpEasements(cpEasementsData);
     
+
       
   
   } //end of drawMap function
@@ -94,6 +95,10 @@
     
     }).addTo(map);
 
+    $("#zoomOut").click(function(){
+      map.fitBounds(counties.getBounds());
+    });
+
     searchByCounty(counties, countiesList)
 
 
@@ -107,7 +112,7 @@
         return {
           color: '#ffc966',
           weight: 0.3,
-          fillOpacity: 0.5,
+          fillOpacity: 0.6,
           fillColor: '#ffc966'
         };
       },
@@ -171,26 +176,26 @@
 
           layer.bindPopup(cpPopupInfo);        
         
-          $(document).mousemove(function(e) {
-            // first offset from the mouse position of the cpPopupInfo 
-            cpPopupInfo.css({
-                "left": e.pageX + 6,
-                "top": e.pageY - cpPopupInfo.height() - 25
-            });
+          // $(document).mousemove(function(e) {
+          //   // first offset from the mouse position of the cpPopupInfo 
+          //   cpPopupInfo.css({
+          //       "left": e.pageX + 6,
+          //       "top": e.pageY - cpPopupInfo.height() - 25
+          //   });
     
-            // if it crashes into the top, flip it lower right
-            if (cpPopupInfo.offset().top < 4) {
-                cpPopupInfo.css({
-                    "top": e.pageY + 15
-                });
-            }
-            // if it crashes into the right, flip it to the left
-            if (cpPopupInfo.offset().left + cpPopupInfo.width() >= $(document).width() - 40) {
-                cpPopupInfo.css({
-                    "left": e.pageX - cpPopupInfo.width() - 80
-                });
-            }
-          });
+          //   // if it crashes into the top, flip it lower right
+          //   if (cpPopupInfo.offset().top < 4) {
+          //       cpPopupInfo.css({
+          //           "top": e.pageY + 15
+          //       });
+          //   }
+          //   // if it crashes into the right, flip it to the left
+          //   if (cpPopupInfo.offset().left + cpPopupInfo.width() >= $(document).width() - 40) {
+          //       cpPopupInfo.css({
+          //           "left": e.pageX - cpPopupInfo.width() - 80
+          //       });
+          //   }
+          // });
 
         //when mousing over layer
         layer.on('mouseover', function() {
