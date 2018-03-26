@@ -95,15 +95,18 @@
    
     }).addTo(map);
 
-
+    //button to zoom out to full extent when clicked
     $("#zoomOut").click(function(){
-      map.fitBounds(counties.getBounds());
+      map.fitBounds(countiesData.getBounds());
     });
-  
+
     searchByCounty(counties, countiesList)
 
 
   } //end of drawCounties function 
+
+
+
 
   //add VA conservation easements to map 
   function drawEasements(easementsData) {
