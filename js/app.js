@@ -91,14 +91,15 @@
             paddingTopLeft: [350, 20]                    
           })               
         })        
-      }
-    
+      }    
+   
     }).addTo(map);
+
 
     $("#zoomOut").click(function(){
       map.fitBounds(counties.getBounds());
     });
-
+  
     searchByCounty(counties, countiesList)
 
 
