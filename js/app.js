@@ -97,7 +97,7 @@
 
     //button to zoom out to full extent when clicked
     $("#zoomOut").click(function(){
-      map.fitBounds(countiesData.getBounds());
+      map.fitBounds(counties.getBounds());
     });
 
     searchByCounty(counties, countiesList)
